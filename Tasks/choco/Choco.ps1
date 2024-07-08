@@ -98,7 +98,7 @@ function Add-Artifactory-Repo-Source
     $repoPath = "https://netwoven.jfrog.io/artifactory/api/nuget/devjani-nuget"
     $p = "cmVmdGtuOjAxOjE3NTE5ODEyOTQ6U2htaHNOcWhtbUltUzdoSkdlbWtJS05CNloy"
 
-    $expression = "$ChocoExePath source add -n devjani-nuget-artifactory -s $repoPath -u medevjani@gmail.com -p $p"
+    $expression = "$ChocoExePath source add -n devjani-nuget-artifactory -priority 1 -s $repoPath -u medevjani@gmail.com -p $p"
     
     Set-ExecutionPolicy Bypass -Scope Process -Force
     $packageScriptPath = [System.IO.Path]::GetTempFileName() + ".ps1"
