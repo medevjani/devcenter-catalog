@@ -100,14 +100,12 @@ function Add-Artifactory-Repo-Source
 
     $expression = "$ChocoExePath source add -n devjani-nuget-artifactory -s $repoPath -u medevjani@gmail.com -p $p"
     
-    $expression = "$expression -y -f --acceptlicense --no-progress --stoponfirstfailure"
-   
-    $expression = "$expression `nexit `$LASTEXITCODE"
-
     Set-ExecutionPolicy Bypass -Scope Process -Force
     $packageScriptPath = [System.IO.Path]::GetTempFileName() + ".ps1"
-    Set-Content -Value $expression -Path $packageScriptPath
     Write-Host "File path $packageScriptPath"
+    Write-Host "File content $expression"
+    Set-Content -Value $expression -Path $packageScriptPath
+    
 
     Execute -File $packageScriptPath
     Remove-Item $packageScriptPath
