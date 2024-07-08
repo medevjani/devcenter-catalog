@@ -95,9 +95,10 @@ function Add-Artifactory-Repo-Source
     param(
         [string] $ChocoExePath
     )
-    $repoPath = "'https://netwoven.jfrog.io/artifactory/api/nuget/devjani-nuget'"
+    $repoPath = "https://netwoven.jfrog.io/artifactory/api/nuget/devjani-nuget"
+    $p = "cmVmdGtuOjAxOjE3NTE5ODEyOTQ6U2htaHNOcWhtbUltUzdoSkdlbWtJS05CNloy"
 
-    $expression = "$ChocoExePath source add -n devjani-nuget-artifactory -s $repoPath -u medevjani@gmail.com -p cmVmdGtuOjAxOjE3NTE5ODEyOTQ6U2htaHNOcWhtbUltUzdoSkdlbWtJS05CNloy"
+    $expression = "$ChocoExePath source add -n devjani-nuget-artifactory -s $repoPath -u medevjani@gmail.com -p $p"
     
     $expression = "$expression -y -f --acceptlicense --no-progress --stoponfirstfailure"
    
