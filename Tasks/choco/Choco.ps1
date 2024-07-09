@@ -103,12 +103,12 @@ function Add-Artifactory-Repo-Source
     Set-ExecutionPolicy Bypass -Scope Process -Force
     $packageScriptPath = [System.IO.Path]::GetTempFileName() + ".ps1"
     Write-Host "File path $packageScriptPath"
-    Write-Host "File content $expression"
+    #Write-Host "File content $expression"
     Set-Content -Value $expression -Path $packageScriptPath
     
 
     Execute -File $packageScriptPath
-    Remove-Item $packageScriptPath
+    #Remove-Item $packageScriptPath
 }
 
 function Execute
