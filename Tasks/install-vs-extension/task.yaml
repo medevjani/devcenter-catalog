@@ -1,7 +1,7 @@
 # This is a Visual Studio extension installation task for Dev Box.
 
 $schema: 1.0
-name: install-vs-extension
+name: install-vs-extensionpoc
 description: Installs a Visual Studio extension
 author: Microsoft Corporation
 command: ".\\Install-VSIXExtension.ps1 -MarketplaceItemName {{marketplaceItemName}}"
@@ -16,7 +16,7 @@ parameters:
 documentation:
   notes: This task is used to install a Visual Studio extension.
   examples:
-    - name: install-vs-extension
+    - name: install-vs-extensionpoc
       description: Install GitHub Copilot
       parameters:
         marketplaceItemName: GitHub.copilotvs

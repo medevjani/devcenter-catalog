@@ -1,7 +1,7 @@
 # This is a simple powershell command execution task for Dev Box.
 
 $schema: 1.0
-name: powershell
+name: powershellpoc
 description: Execute a powershell command.
 author: Microsoft Corporation
 command: ".\\Run-Command.ps1 -Command {{command}} -WorkingDirectory {{workingDirectory}}"
@@ -19,11 +19,11 @@ parameters:
 documentation:
   notes: This task is used to execute a powershell command.
   examples:
-    - name: powershell
+    - name: powershellpoc
       description: print hello world
       parameters:
         command: "Write-Host 'hello, world!'"
-    - name: powershell
+    - name: powershellpoc
       description: run script
       parameters:
         command: "./script.ps1"
