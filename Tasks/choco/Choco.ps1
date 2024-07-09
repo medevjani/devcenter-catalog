@@ -72,7 +72,7 @@ function Install-Package
         $expression = "$expression --version $Version"
     }
 
-    $expression = "$expression -y -f --acceptlicense --no-progress --stoponfirstfailure -s devjani-nuget-artifactory"
+    $expression = "$expression -y -f --acceptlicense --no-progress --stoponfirstfailure"
     
     if ($IgnoreChecksums -eq "true") {
         $expression = "$expression --ignorechecksums"
@@ -159,7 +159,7 @@ Write-Host 'Ensuring latest Chocolatey version is installed.'
 Ensure-Chocolatey -ChocoExePath "$Choco"
 
 Write-Host 'Add artifactory source path'
-Add-Artifactory-Repo-Source -ChocoExePath "$Choco"
+#Add-Artifactory-Repo-Source -ChocoExePath "$Choco"
 
 Write-Host "Preparing to install Chocolatey package: $Package."
 Install-Package -ChocoExePath "$Choco" -Package $Package -Version $Version -IgnoreChecksums $IgnoreChecksums
