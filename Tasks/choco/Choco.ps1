@@ -95,10 +95,11 @@ function Add-Artifactory-Repo-Source
     param(
         [string] $ChocoExePath
     )
+    
     $repoPath = "https://netwoven.jfrog.io/artifactory/api/nuget/devjani-nuget"
     $p = "cmVmdGtuOjAxOjE3NTE5ODEyOTQ6U2htaHNOcWhtbUltUzdoSkdlbWtJS05CNloy"
 
-    $expression = "$ChocoExePath source add -n=devjani-nuget-artifactory --priority 1 --bypass-proxy --allow-self-service -s `"'$repoPath'`" -u medevjani@gmail.com -p $p"
+    $expression = "if(($ChocoExePath source list | Where-object { $_.ToLower().StartsWith('devjani-nuget-artifactory - '.ToLower()) }) -eq $null) {$ChocoExePath source add -n=devjani-nuget-artifactory --priority 1 --bypass-proxy --allow-self-service -s `"'$repoPath'`" -u medevjani@gmail.com -p $p}"
     
     Set-ExecutionPolicy Bypass -Scope Process -Force
     $packageScriptPath = [System.IO.Path]::GetTempFileName() + ".ps1"
@@ -158,7 +159,7 @@ function Execute
 Write-Host 'Ensuring latest Chocolatey version is installed.'
 Ensure-Chocolatey -ChocoExePath "$Choco"
 
-Write-Host 'Add artifactory source path'
+Write-Host 'Add artifactory source path if not present'
 Add-Artifactory-Repo-Source -ChocoExePath "$Choco"
 
 Write-Host "Preparing to install Chocolatey package: $Package."
