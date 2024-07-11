@@ -167,6 +167,6 @@ Write-Host 'Add artifactory source path if not present'
 Add-Artifactory-Repo-Source -ChocoExePath "$Choco"
 
 Write-Host "Preparing to install Chocolatey package: $Package."
-Install-Package -ChocoExePath "$Choco" -Package $Package -Version $Version -IgnoreChecksums $IgnoreChecksums
+Install-Package -ChocoExePath "$Choco" -Package $Package -Version $Version -IgnoreChecksums $IgnoreChecksums -AdditionalParams $AdditionalParams
 
 Write-Host "`nThe artifact was applied successfully.`n"
