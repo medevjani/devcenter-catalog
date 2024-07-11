@@ -63,7 +63,8 @@ function Install-Package
         [string] $ChocoExePath,
         [string] $Package,
         [string] $Version,
-        [string] $IgnoreChecksums
+        [string] $IgnoreChecksums,
+        [string] $AdditionalParams
     )
 
     $expression = "$ChocoExePath install $Package"
@@ -76,6 +77,9 @@ function Install-Package
     
     if ($IgnoreChecksums -eq "true") {
         $expression = "$expression --ignorechecksums"
+    }
+    if ($AdditionalParams -ne "") {
+        $expression = "$expression $AdditionalParams"
     }
 
     $expression = "$expression `nexit `$LASTEXITCODE"

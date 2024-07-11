@@ -4,7 +4,7 @@ $schema: 1.0
 name: chocopoc
 description: Installs a Chocolatey package.
 author: Microsoft Corporation
-command: "./Choco.ps1 -Package {{package}} -Version {{version}} -IgnoreChecksums {{ignoreChecksums}}"
+command: "./Choco.ps1 -Package {{package}} -Version {{version}} -IgnoreChecksums {{ignoreChecksums}} -AdditionalParams {{additionalParams}}"
 parameters:
   package:
     default: ""
@@ -25,6 +25,11 @@ parameters:
     type: boolean
     required: false
     description: Whether to ignore checksums when installing the package.
+  additionalParams:
+    default: ""
+    type: string
+    required: false
+    description: Maintain additional parameters when installing the package.
 documentation:
   notes: This task is used to install a Chocolatey package.
   examples:
