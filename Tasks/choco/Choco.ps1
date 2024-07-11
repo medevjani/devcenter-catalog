@@ -7,7 +7,11 @@ param(
     [string] $Version,
  
     [Parameter()]
-    [string] $IgnoreChecksums
+    [string] $IgnoreChecksums,
+
+    [Parameter()]
+    [string] $AdditionalParams
+
 )
 
 if (-not $Package) {
@@ -78,9 +82,9 @@ function Install-Package
     if ($IgnoreChecksums -eq "true") {
         $expression = "$expression --ignorechecksums"
     }
-    # if ($AdditionalParams -ne "") {
-    #     $expression = "$expression $AdditionalParams"
-    # }
+    if ($AdditionalParams -ne "") {
+        $expression = "$expression $AdditionalParams"
+    }
 
     $expression = "$expression `nexit `$LASTEXITCODE"
 
